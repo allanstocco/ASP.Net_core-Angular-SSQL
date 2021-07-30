@@ -1,0 +1,18 @@
+<h2>Product Registration</h2>
+<hr>
+
+<!-- Aqui incluímos uma condição (ternária) no submit: Se o objeto produto não for nulo, é uma edição, do contrário, é uma criação-->
+<form [formGroup]="form" (ngSubmit)="this.produto ? this.edit() : this.create();">
+  <div class="form-group">
+    <label for="descricao">Product description:</label>
+    <input type="text" class="form-control" formControlName="descricao" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="codigo">Product code:</label>
+    <input type="text" class="form-control" formControlName="codigo" placeholder="Code">
+  </div>
+
+  <!-- Nos botões incluímos a mesma condição do submit, o botão editar só será exibido se o produto não for nulo, e vice versa-->
+  <button *ngIf="this.produto" type="submit" class="btn btn-warning">Edit</button>
+  <button *ngIf="!this.produto" type="submit" class="btn btn-success">Register</button>
+</form>
